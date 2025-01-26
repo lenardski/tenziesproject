@@ -1,5 +1,5 @@
-export default function Die({value}){
+export default function Die({diceObject}) {
     return (
-        <button>{value}</button>
+        <button>{diceObject.value}</button>
     )
 }
