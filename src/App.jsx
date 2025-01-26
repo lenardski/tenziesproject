@@ -1,19 +1,24 @@
 import Die from "./components/Die"
+import React from "react"
 
 function App() {
+
+  const [diceRolls, setDiceRolls] = React.useState(generateDiceRolls())
+
+  function generateDiceRolls() {
+    return new Array(10)
+      .fill(null)
+      .map(() => Math.ceil(Math.random() * 6) + 1)
+  }
+
+  function generateDice() {
+    return diceRolls.map((roll, index) => <Die key={index} value={roll} />)
+  }
+
   return (
     <main>
       <div className="dice-container">
-        <Die value={1}></Die>
-        <Die value={2}></Die>
-        <Die value={3}></Die>
-        <Die value={4}></Die>
-        <Die value={5}></Die>
-        <Die value={6}></Die>
-        <Die value={1}></Die>
-        <Die value={1}></Die>
-        <Die value={1}></Die>
-        <Die value={1}></Die>
+        {generateDice()}
       </div>
     </main>
   )
